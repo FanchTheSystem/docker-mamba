@@ -12,6 +12,8 @@ ENV MAMBA_VERSION='0.5.1'
 ENV CONDA_HOME=/opt/conda
 ENV CONDA_BIN=/opt/conda/bin/conda
 
+ENV PATH="/opt/conda/bin:${PATH}"
+
 # prepare
 RUN apt-get update && apt-get --yes upgrade
 RUN apt-get install --yes \
