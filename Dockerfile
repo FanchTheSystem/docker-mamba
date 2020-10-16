@@ -37,8 +37,8 @@ RUN ${CONDA_BIN} config --add channels bioconda
 # https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#always-yes
 # RUN ${CONDA_BIN} config --set always_yes true
 # https://docs.conda.io/projects/conda/en/latest/configuration.html
-RUN ${CONDA_BIN} config --set always_copy true
-RUN ${CONDA_BIN} config --set channel_priority disabled
+#RUN ${CONDA_BIN} config --set always_copy true
+#RUN ${CONDA_BIN} config --set channel_priority disabled
 RUN ${CONDA_BIN} config --set verbosity 1
 
 # install
