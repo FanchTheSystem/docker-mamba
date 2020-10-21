@@ -5,12 +5,13 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
-ENV PYTHON_VERSION='3.8'
+ENV PYTHON_VERSION='3.6'
 ENV CONDA_VERSION='4.8.5'
 ENV MAMBA_VERSION='0.5.3'
 
 ENV CONDA_HOME=/opt/conda
 ENV CONDA_BIN=/opt/conda/bin/conda
+ENV MAMBA_BIN=/opt/conda/bin/mamba
 
 ENV PATH="/opt/conda/bin:${PATH}"
 
@@ -42,9 +43,9 @@ RUN ${CONDA_BIN} config --add channels bioconda
 #RUN ${CONDA_BIN} config --set verbosity 1
 RUN ${CONDA_BIN} config --set quiet true
 
-# install
-RUN ${CONDA_BIN} install conda=${CONDA_VERSION} --yes
+# install : warning python may update conda
 RUN ${CONDA_BIN} install python=${PYTHON_VERSION} --yes
+RUN ${CONDA_BIN} install conda=${CONDA_VERSION} --yes
 RUN ${CONDA_BIN} install mamba=${MAMBA_VERSION} --yes
 
 # clean
@@ -53,3 +54,6 @@ RUN apt-get --yes autoclean
 
 # test
 # RUN ${CONDA_BIN} config --show
+
+RUN ${CONDA_BIN} --version
+RUN ${MAMBA_BIN} --version
