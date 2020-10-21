@@ -39,7 +39,8 @@ RUN ${CONDA_BIN} config --add channels bioconda
 # https://docs.conda.io/projects/conda/en/latest/configuration.html
 #RUN ${CONDA_BIN} config --set always_copy true
 #RUN ${CONDA_BIN} config --set channel_priority disabled
-RUN ${CONDA_BIN} config --set verbosity 1
+#RUN ${CONDA_BIN} config --set verbosity 1
+RUN ${CONDA_BIN} config --set quiet true
 
 # install
 RUN ${CONDA_BIN} install conda=${CONDA_VERSION} --yes
