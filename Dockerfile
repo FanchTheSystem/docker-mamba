@@ -16,7 +16,7 @@ ENV MAMBA_BIN=/opt/conda/bin/mamba
 ENV PATH="/opt/conda/bin:${PATH}"
 
 # prepare
-RUN apt-get update && apt-get --yes -qq upgrade
+RUN apt-get -qq update && apt-get --yes -qq upgrade
 RUN apt-get install --yes -qq \
     apt-utils \
     apt-transport-https\
