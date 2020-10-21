@@ -16,8 +16,8 @@ ENV MAMBA_BIN=/opt/conda/bin/mamba
 ENV PATH="/opt/conda/bin:${PATH}"
 
 # prepare
-RUN apt-get update && apt-get --yes upgrade
-RUN apt-get install --yes \
+RUN apt-get update && apt-get --yes -qq upgrade
+RUN apt-get install --yes -qq \
     apt-utils \
     apt-transport-https\
     ca-certificates\
@@ -44,13 +44,11 @@ RUN ${CONDA_BIN} config --add channels bioconda
 RUN ${CONDA_BIN} config --set quiet true
 
 # install : warning python may update conda
-RUN ${CONDA_BIN} install python=${PYTHON_VERSION} --yes
-RUN ${CONDA_BIN} install conda=${CONDA_VERSION} --yes
-RUN ${CONDA_BIN} install mamba=${MAMBA_VERSION} --yes
+RUN ${CONDA_BIN} install --yes python=${PYTHON_VERSION} conda=${CONDA_VERSION} mamba=${MAMBA_VERSION}
 
 # clean
-RUN apt-get --yes autoremove
-RUN apt-get --yes autoclean
+RUN apt-get --yes -qq autoremove
+RUN apt-get --yes -qq autoclean
 
 # test
 # RUN ${CONDA_BIN} config --show
