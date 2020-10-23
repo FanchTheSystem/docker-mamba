@@ -41,7 +41,7 @@ RUN ${CONDA_BIN} config --add channels bioconda
 #RUN ${CONDA_BIN} config --set always_copy true
 #RUN ${CONDA_BIN} config --set channel_priority disabled
 #RUN ${CONDA_BIN} config --set verbosity 1
-RUN ${CONDA_BIN} config --set quiet true
+#RUN ${CONDA_BIN} config --set quiet true
 
 # install : warning python may update conda
 RUN ${CONDA_BIN} install --yes python=${PYTHON_VERSION} conda=${CONDA_VERSION} mamba=${MAMBA_VERSION}
